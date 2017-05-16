@@ -1,0 +1,171 @@
+//Discovery
+金鑰
+{
+  "url": "https://gateway.watsonplatform.net/⋯⋯",
+  "username": "U",
+  "password": "P"
+}
+API information
+
+collection_id
+bed06977-e2de-42a8-a2a8-eb5f7549674b
+
+configuration_id
+bfcf5d77-9d3d-4a2a-bf0a-2e66d0991d86
+
+environment_id
+473c12e2-f235-48ac-9379-80a4b49a5807
+//創做一個environment
+curl -X POST -u "{username}":"{password}" -H "Content-Type: application/json" -d '{ "name":"my-first-environment", "description":"exploring environments", "size":0}' "https://gateway.watsonplatform.net/⋯⋯"
+curl -X POST -u "U":"P" -H "Content-Type: application/json" -d '{ "name":"my-first-environment", "description":"exploring environments", "size":1}' "https://gateway.watsonplatform.net/⋯⋯"
+
+//檢查狀態
+curl -u "{username}":"{password}" https://gateway.watsonplatform.net/⋯⋯
+curl -u "U":"P" https://gateway.watsonplatform.net/⋯⋯
+//回傳狀態
+{
+  "environment_id": "473c12e2-f235-48ac-9379-80a4b49a5807",
+  "name": "byod",
+  "description": "",
+  "created": "2017-02-15T03:32:45.671Z",
+  "updated": "2017-02-15T03:32:45.671Z",
+  "status": "active",
+  "read_only": false,
+  "index_capacity": {
+    "disk_usage": {
+      "used_bytes": 520,
+      "total_bytes": 2147483648,
+      "used": "0.51 KB",
+      "total": "2 GB",
+      "percent_used": 0
+    },
+    "memory_usage": {
+      "used_bytes": 378933952,
+      "total_bytes": 1665269760,
+      "used": "361.38 MB",
+      "total": "1.55 GB",
+      "percent_used": 22.76
+    }
+  }
+}
+
+//檢查config
+curl -u "{username}":"{password}" https://gateway.watsonplatform.net/⋯⋯
+curl -u "U":"P" https://gateway.watsonplatform.net/⋯⋯
+//回傳config
+{
+  "configurations": [
+    {
+      "configuration_id": "bfcf5d77-9d3d-4a2a-bf0a-2e66d0991d86",
+      "name": "Default Configuration",
+      "description": "The configuration used by default when creating a new collection without specifying a configuration_id.",
+      "created": "2017-02-15T03:32:45.679Z",
+      "updated": "2017-02-15T03:32:45.679Z"
+    }
+  ]
+}
+
+//建立colletion
+curl -X POST -u "{username}":"{password}" -H "Content-Type: application/json" -d '{"name": "my-first-collection", "description": "exploring collections", "configuration_id":"{configuration_id}" , "language": "en_us"}' https://gateway.watsonplatform.net/⋯⋯
+curl -X POST -u "U":"P" -H "Content-Type: application/json" -d '{"name": "my-first-collection", "description": "exploring collections", "configuration_id":"bfcf5d77-9d3d-4a2a-bf0a-2e66d0991d86" , "language": "en_us"}' https://gateway.watsonplatform.net/⋯⋯
+
+
+//查collution
+curl -u "{username}":"{password}" https://gateway.watsonplatform.net/⋯⋯
+curl -u "U":"P" https://gateway.watsonplatform.net/⋯⋯
+//回傳
+{
+  "collection_id": "bed06977-e2de-42a8-a2a8-eb5f7549674b",
+  "name": "Discovery",
+  "configuration_id": "bfcf5d77-9d3d-4a2a-bf0a-2e66d0991d86",
+  "language": "en_us",
+  "status": "active",
+  "description": null,
+  "created": "2017-02-15T03:34:12.538Z",
+  "updated": "2017-02-15T03:34:12.538Z",
+  "document_counts": {
+    "available": 0,
+    "processing": 0,
+    "failed": 0
+  }
+ //POST檔案
+ curl -X POST -u "{username}":"{password}" -F "file=@sample1.html" https://gateway.watsonplatform.net/⋯⋯
+curl -X POST -u "U":"P" -F "file=@C:/Users/ext_tomt/Desktop/sample1.html" https://gateway.watsonplatform.net/⋯⋯ 
+curl -X POST -u "U":"P" -F "file=@C:/Users/ext_tomt/Desktop/sample2.html" https://gateway.watsonplatform.net/⋯⋯ 
+curl -X POST -u "U":"P" -F "file=@C:/Users/ext_tomt/Desktop/sample3.html" https://gateway.watsonplatform.net/⋯⋯ 
+curl -X POST -u "U":"P" -F "file=@C:/Users/ext_tomt/Desktop/sample4.html" https://gateway.watsonplatform.net/⋯⋯ 
+//刪除檔案
+curl -X DELETE -u "U":"P" "https://gateway.watsonplatform.net/⋯⋯"
+
+//post檔案回傳
+{
+  "document_id": "048aeeb5-315c-482c-9100-2c2d010677ee",
+  "status": "processing"
+}
+{
+  "document_id": "c934a7dc-8962-40e2-b0ea-099bca9d0b26",
+  "status": "processing"
+}
+{
+  "document_id": "06d81f60-d3c1-446c-94dd-34d0354428b6",
+  "status": "processing"
+}
+{
+  "document_id": "7e5e393d-51bb-45df-9369-afaf51fcfdff",
+  "status": "processing"
+}
+//刪除檔案回傳
+{
+  "document_id": "7e5e393d-51bb-45df-9369-afaf51fcfdff",
+  "status": "deleted"
+}
+//QUERY
+
+curl -u "{username}":"{password}" 'https://gateway.watsonplatform.net/⋯⋯'
+curl -u "U":"P" 'https://gateway.watsonplatform.net/⋯⋯'
+
+curl -u "U":"P" "https://gateway.watsonplatform.net/⋯⋯"
+{
+  "matching_results": 4,
+  "results": [
+    {
+      "id": "06d81f60-d3c1-446c-94dd-34d0354428b6",
+      "score": 1.9692578,
+      "text": "Slack, IBM Partner to Bring Watson to Developers\n\nPublished: Wed, 26 Oct 2016 11:01:52 GMT\n\nIBM and Slack are partnering to bring Watson to SlackΓÇÖs global community of developers and enterprise users. Drawing on the power of SlackΓÇÖs digital workplace and the cognitive computing capabilities of Watson, developers will be able to create more offerings ΓÇö including bots and other conversational inferences ΓÇö that will transform the platformΓÇÖs user experience. Developers can easily access the range of Watson services -- such as Conversation, Sentiment Analysis or speech APIs -- and build powerful new tools for the platform with this enhanced cognitive functionality.\n\nURL: http://www.ibm.com/press/us/en/pres⋯⋯"
+    },
+    {
+      "id": "7e5e393d-51bb-45df-9369-afaf51fcfdff",
+      "score": 1.949466,
+      "text": "Hello, OnStar -- Meet Watson\n\nPublished: Wed, 26 Oct 2016 11:00:27 GMT\n\nGeneral Motors and IBM today announced a partnership to bring the power of OnStar and IBM Watson together to create OnStar Go, the auto industryΓÇÖs first cognitive mobility platform. Starting in early 2017, OnStar is expected to give millions of GM drivers the ability to connect and interact with their favorite brands. The platform will deliver personalized content through the dashboard and other digital channels supported by the OnStar Go ecosystem to make the most of time spent in the car.\n\nURL: http://www.ibm.com/press/us/en/pres⋯⋯"
+    },
+    {
+      "id": "048aeeb5-315c-482c-9100-2c2d010677ee",
+      "score": 1.7054274,
+      "text": "Celgene and IBM Watson Health Forge Collaboration Designed to Transform Patient Safety Monitoring\n\nPublished: Tue, 01 Nov 2016 08:32:23 GMT\n\nCelgene Corporation and IBM Watson Health today announced a collaboration to co-develop IBM Watson for Patient Safety, a new offering that aims to enhance pharmacovigilance methods used to collect, assess, monitor, and report adverse drug reactions. The new offering will run on the Watson Health Cloud.\n\nURL: http://www.ibm.com/press/us/en/pres⋯⋯"
+    },
+    {
+      "id": "c934a7dc-8962-40e2-b0ea-099bca9d0b26",
+      "score": 1.5754063,
+      "text": "IBM to Acquire Sanovi Technologies to Expand Disaster Recovery Services for Hybrid Cloud\n\nPublished: Thu, 27 Oct 2016 07:01:21 GMT\n\nIBM today announced it has signed a definitive agreement to acquire Sanovi Technologies, a privately held company that provides hybrid cloud recovery, cloud migration and business continuity software for enterprise data centers and cloud infrastructure. Adding these capabilities along with advanced analytics will better enable IBM to bolster its Software Defined Resiliency strategy and delivery of Business Continuity and Disaster Recovery services for clients undergoing digital and hybrid cloud transformation.\n\nURL: http://www.ibm.com/press/us/en/pres⋯⋯"
+    }
+  ]
+}
+ curl -u "U":"P" "https://gateway.watsonplatform.net/⋯⋯"
+ 
+  
+
+//Conversation
+{
+  "url": "https://gateway.watsonplatform.net/⋯⋯",
+  "username": "U",
+  "password": "P"
+}
+
+curl -X POST -u "U":"P" -H "Content-Type:application/json" -d '{"input": {"text": "Turn on the lights"}, "context": {"conversation_id": "1b7b67c0-90ed-45dc-8508-9488bc483d5b", "system": {"dialog_stack":[{"dialog_node":"root"}], "dialog_turn_counter": 1, "dialog_request_counter": 1}}}' "https://gateway.watsonplatform.net/⋯⋯"
+curl -X POST -u "U":"P" --header "Content-Type:application/json" --data "{\"input\": {\"text\": \"Turn on the lights\"}, \"context\": {\"conversation_id\": \"1b7b67c0-90ed-45dc-8508-9488bc483d5b\", \"system\": {"dialog_st
+\ack":[{"dialog_node":"root"}], \"dialog_turn_counter\": 1, \"dialog_request_counter\": 1}}}" "https://gateway.watsonplatform.net/⋯⋯"
+
+
+curl -X POST -u "U":"P" --header "Content-Type:application/json" --data "{\"input\": {\"text\": \"Turn on the lights\"}}" "https://gateway.watsonplatform.net/⋯⋯"
+
+{"intents":[{"intent":"Greeting","confidence":0.6377663734533463}],"entities":[],"input":{"text":"Turn on the lights"},"output":{"log_messages":[],"text":["good morning"],"nodes_visited":["greeting"]},"context":{"conversation_id":"4a775f9b-5026-4686-a81d-ff2eed666c0d","system":{"dialog_stack":[{"dialog_node":"root"}],"dialog_turn_counter":1,"dialog_request_counter":1,"_node_output_map":{"greeting":[0]}}}}
